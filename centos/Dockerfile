@@ -1,0 +1,27 @@
+# XBSV
+# version 0.1
+
+From centos:centos6
+Maintainer Jamey Hicks <jamey.hicks@qrclab.com>
+
+RUN mkdir -p /scratch/bluespec /scratch/Xilinx/Vivado
+RUN cat /etc/centos-release
+RUN uname -a
+RUN find /etc/yum*
+RUN cat /etc/yum.conf
+RUN yum --help
+RUN yum search git
+RUN yum -y install tar
+RUN yum -y install git
+RUN git clone git://github.com/cambridgehackers/xbsv /scratch/xbsv
+RUN yum -y groupinstall “Compatibility libraries”
+RUN yum -y install flash-plugin nspluginwrapper curl
+#RUN yum -y install python-ply
+ADD ply-3.4.tar.gz /scratch/xbsv/ply
+RUN yum -y install python-argparse
+RUN yum -y install graphviz graphviz-tcl
+RUN yum -y install ftp
+ADD Bluespec-2014.07.A.tar.gz /scratch/bluespec/Bluespec-2014.07.A
+ADD Vivado-2014.1.tar.gz /scratch/Xilinx/Vivado/2014.1
+RUN rpm -qa
+
