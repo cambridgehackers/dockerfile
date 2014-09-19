@@ -16,3 +16,4 @@ RUN yum -y install strace
 RUN yum -y install vim
 RUN yum -y install python-setuptools
 RUN easy_install ply
+RUN yum -y install libX11
