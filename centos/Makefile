@@ -8,8 +8,9 @@ DOCKER_ENV=-e LM_LICENSE_FILE=$(LM_LICENSE_FILE)
 
 run:
 	#sudo docker run $(DOCKER_VOLUMES) $(USER):centos6-xbsv easy_install ply
-	sudo docker run $(DOCKER_ENV) $(DOCKER_VOLUMES) -u xbsv $(USER):centos6-xbsv make -C /scratch/xbsv/examples/simple gen.bluesim build.bluesim run.bluesim
-	sudo docker run $(DOCKER_ENV) $(DOCKER_VOLUMES) -u xbsv $(USER):centos6-xbsv make -C /scratch/xbsv/examples/simple gen.zedboard build.zedboard run.zedboard
+	sudo docker run $(DOCKER_ENV) $(DOCKER_VOLUMES) -u xbsv $(USER):centos6-xbsv make V=1 -C /scratch/xbsv/examples/simple gen.bluesim build.bluesim run.bluesim
+	sudo docker run $(DOCKER_ENV) $(DOCKER_VOLUMES) -u xbsv $(USER):centos6-xbsv which vivado
+	sudo docker run $(DOCKER_ENV) $(DOCKER_VOLUMES) -u xbsv $(USER):centos6-xbsv make V=1 -C /scratch/xbsv/examples/simple gen.zedboard build.zedboard run.zedboard
 
 
 build:
