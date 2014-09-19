@@ -20,6 +20,9 @@ RUN yum -y install tar
 RUN yum -y install git
 # RUN yum -y install graphviz graphviz-tcl
 # RUN yum -y install ftp
+RUN yum -y install strace
+# xbsv uses the xxd utility, which is part of vim
+RUN yum -y install vim
 RUN useradd xbsv
 VOLUME /scratch/bluespec
 VOLUME /scratch/Xilinx
@@ -33,8 +36,11 @@ RUN git pull
 RUN git clone git://github.com/cambridgehackers/buildcache /scratch/buildcache
 WORKDIR /scratch/buildcache
 RUN git pull
-WORKDIR /
-RUN chown -R xbsv.xbsv /scratch/xbsv
+WORKDIR /scratch/xbsv
+ADD flexlmrc /home/xbsv/.flexlmrc
+ADD Xilinx.lic /home/xbsv/.Xilinx/Xilinx.lic
+RUN chown -R xbsv.xbsv /scratch/xbsv /home/xbsv
 ENV BLUESPECDIR /scratch/bluespec/Bluespec-2014.07.A/lib
 ENV PATH $PATH:/scratch/bluespec/Bluespec-2014.07.A/bin:/scratch/android-ndk-r9d:/scratch/Xilinx/Vivado/2014.1/bin
-
+USER xbsv
+ENV HOME /home/xbsv
