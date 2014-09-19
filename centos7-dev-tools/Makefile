@@ -1,0 +1,15 @@
+
+## format:
+##  -v hostdir:containerdir:ro
+DOCKER_VOLUMES=
+DOCKER_ENV=
+
+shell:
+	sudo docker run $(DOCKER_ENV) $(DOCKER_VOLUMES) -i -t $(USER):centos7-dev-tools /bin/sh
+
+build:
+	sudo docker build -t $(USER):centos7-dev-tools .
+
+clean:
+	docker rm `docker ps -qa` || true
+	docker rmi `docker images -f dangling=true -qa` || true
