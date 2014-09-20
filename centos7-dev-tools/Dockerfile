@@ -17,3 +17,5 @@ RUN yum -y install vim
 RUN yum -y install python-setuptools
 RUN easy_install ply
 RUN yum -y install libX11
+RUN yum -y install libXft
+RUN yum -y install fontconfig
