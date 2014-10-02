@@ -22,6 +22,7 @@ run:
 build:
 	cp ~/.Xilinx/Xilinx.lic .
 	cp ~/.flexlmrc flexlmrc || touch flexlmrc
+	#sudo docker build --no-cache=true -t centos7-xbsv .
 	sudo docker build -t centos7-xbsv .
 
 clean:
