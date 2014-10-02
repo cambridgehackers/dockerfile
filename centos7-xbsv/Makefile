@@ -22,7 +22,7 @@ run:
 build:
 	cp ~/.Xilinx/Xilinx.lic .
 	cp ~/.flexlmrc flexlmrc || touch flexlmrc
-	sudo docker build -t $(USER):centos7-xbsv .
+	sudo docker build -t centos7-xbsv .
 
 clean:
 	docker rm `docker ps -qa` || true
