@@ -1,12 +1,14 @@
 # XBSV
 # version 0.1
 
-From centos7-dev-tools:latest
+From vivado:2014.1
 Maintainer Jamey Hicks <jamey.hicks@qrclab.com>
 RUN useradd -g users xbsv
-ADD Bluespec-2014.07.A.tar.gz /scratch/bluespec/
+#ADD Bluespec-2014.07.A.tar.gz /scratch/bluespec/
+ADD Bluespec-2014.05.beta1.tar.gz /scratch/bluespec/
 ADD xbsv.repo /etc/yum.repos.d/xbsv.repo
 RUN yum -y install xbsv
+RUN yum -y install android-tools
 ## fix up a couple of things
 RUN chmod agu+rx /usr/share/xbsv/scripts/*.py
 RUN sed -i 's|IPDIR=$(XBSVDIR)/out|IPDIR=$(HOME)/.xbsv/out|' /usr/share/xbsv/Makefile.xbsv

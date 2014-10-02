@@ -19,7 +19,10 @@ run:
 	sudo docker run $(DOCKER_ENV) $(DOCKER_VOLUMES) -u xbsv $(USER):centos7-xbsv make V=1 -C /scratch/xbsv/examples/simple gen.zedboard build.zedboard run.zedboard
 
 
-build:
+Bluespec-2014.05.beta1.tar.gz: /scratch/bluespec/Bluespec-2014.05.beta1
+	tar -zcvf Bluespec-2014.05.beta1.tar.gz -C /scratch/bluespec Bluespec-2014.05.beta1
+
+build: Bluespec-2014.05.beta1.tar.gz
 	cp ~/.Xilinx/Xilinx.lic .
 	cp ~/.flexlmrc flexlmrc || touch flexlmrc
 	#sudo docker build --no-cache=true -t centos7-xbsv .
