@@ -1,7 +1,6 @@
 From centos:centos7
 Maintainer Jamey Hicks <jamey.hicks@qrclab.com>
 
-RUN mkdir -p /scratch/bluespec /scratch/Xilinx/Vivado
 RUN yum -y groupinstall “Compatibility libraries”
 RUN yum -y groupinstall "Development tools"
 RUN yum -y install gcc
