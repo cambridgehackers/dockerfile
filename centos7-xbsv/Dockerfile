@@ -1,11 +1,9 @@
 # XBSV
 # version 0.1
 
-From vivado:2014.1
+From centos7-dev-tools
 Maintainer Jamey Hicks <jamey.hicks@qrclab.com>
 RUN useradd -g users xbsv
-#ADD Bluespec-2014.07.A.tar.gz /scratch/bluespec/
-ADD Bluespec-2014.05.beta1.tar.gz /scratch/bluespec/
 ADD xbsv.repo /etc/yum.repos.d/xbsv.repo
 RUN yum -y install xbsv
 RUN yum -y install android-tools
@@ -16,8 +14,8 @@ RUN sed -i 's|../..|$(XBSVDIR)|' /usr/share/xbsv/examples/*/Makefile
 ADD flexlmrc /home/xbsv/.flexlmrc
 ADD Xilinx.lic /home/xbsv/.Xilinx/Xilinx.lic
 RUN ln -s /usr/lib64/libgmp.so.10.1.1 /usr/lib64/libgmp.so.3
-ENV BLUESPECDIR /scratch/bluespec/Bluespec-2014.07.A/lib
-ENV PATH $PATH:/scratch/bluespec/Bluespec-2014.07.A/bin:/scratch/android-ndk-r9d:/scratch/Xilinx/Vivado/2014.1/bin
+ENV BLUESPECDIR /scratch/bluespec/Bluespec-2014.05.beta1/lib
+ENV PATH $PATH:/scratch/bluespec/Bluespec-2014.05.beta1/bin:/scratch/android-ndk-r9d:/scratch/Xilinx/Vivado/2014.1/bin
 ENV HOME /home/xbsv
 ENV XBSVDIR /usr/share/xbsv
 VOLUME /home/xbsv/work
