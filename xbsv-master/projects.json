@@ -1,8 +1,5 @@
-{"frob": {"repo": "git://github.com/jameyhicks/simple.git"},
- "simple": {"repo": "git://github.com/jameyhicks/simple.git"},
- "barry": {"repo": "git://github.com/jameyhicks/simple.git"},
- "jazz": {"repo": "git://github.com/jameyhicks/simple.git"},
- "baz": {"repo": "git://github.com/jameyhicks/simple.git"},
- "fred": {"repo": "git://github.com/jameyhicks/simple.git"},
- "echo": {"repo": "git://github.com/jameyhicks/echo.git"},
- "foooo": {"repo": "git://github.com/jameyhicks/simple.git"}}
+{
+ "simple": {"repo": "git://github.com/jameyhicks/simple.git", "arches": ["bluesim", "zedboard"]},
+ "echo": {"repo": "git://github.com/jameyhicks/echo.git"}
+}
+
