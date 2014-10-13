@@ -18,5 +18,5 @@ RUN chown buildbot.users /scratch/buildbot/.ssh /scratch/buildbot/.ssh/*
 RUN ls -al /scratch/buildbot/.ssh
 RUN chown -R buildbot.users /scratch/buildbot
 WORKDIR /scratch/buildbot
-#RUN buildslave create-slave worker sj9:9989 worker-`cat /scratch/buildbot/workername.txt` xbsv-rules-atomically
+#RUN buildslave create-slave worker sj9:9989 worker-xg10 xbsv-rules-atomically
 #ENTRYPOINT buildslave start worker
