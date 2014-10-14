@@ -1,5 +1,1 @@
-{
- "simple": {"repo": "git://github.com/jameyhicks/simple.git", "arches": ["bluesim", "zedboard"]},
- "echo": {"repo": "git://github.com/jameyhicks/echo.git"}
-}
-
+{"leds": {"repo": "git://github.com/zedblue/leds.git", "arches": ["zedboard", "bluesim"], "revision": ""}, "abc": {"repo": "git://github.com/jameyhicks/leds.git", "arches": ["bluesim"], "revision": ""}, "simple": {"repo": "git://github.com/jameyhicks/simple.git", "arches": ["bluesim", "zedboard"]}, "echo": {"repo": "git://github.com/jameyhicks/echo.git", "arches": ["zedboard"], "revision": ""}, "jca2": {"repo": "git://github.com/zedblue/leds.git", "arches": ["zedboard"], "revision": ""}, "jca": {"repo": "git://github.com/zedblue/leds.git", "arches": ["zedboard"], "revision": ""}}
