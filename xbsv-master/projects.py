@@ -61,7 +61,7 @@ class AddProjectResource(ActionResource):
             if branches and branches[0] != '':
                 p['branch'] = branches[0]
 	    projects[projectname] = p
-	    json.dump(projects, open('projects.json', 'w'))
+	    json.dump(projects, open('projects.json', 'w'), indent=4)
 	    subprocess.call(["/usr/bin/buildbot", "reconfig", "/scratch/buildbot/master"])
 	    msg = 'added project: ' + ' '.join(req.args.get('projectname', '')) + ' url: ' + ' '.join(req.args.get('projectrepo', ''))
         defer.returnValue((path_to_root(req), msg))
