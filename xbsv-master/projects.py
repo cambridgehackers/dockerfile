@@ -8,9 +8,11 @@ import sys
 import twisted
 from twisted.python import log
 from twisted.internet import defer
+from twisted.web.util import Redirect
 from buildbot.status.web.base import ActionResource
 from buildbot.status.web.base import HtmlResource
 from buildbot.status.web.base import path_to_root
+from buildbot.status.web.base import path_to_authzfail
 
 
 class ProjectsResource(HtmlResource):
@@ -31,7 +33,11 @@ class AddProjectResource(ActionResource):
     @defer.inlineCallbacks
     def performAction(self, req):
 	authz = self.getAuthz(req)
-	res = yield authz.actionAllowed('forceAllBuilds', req)
+	print authz.getUsername(req), authz.authenticated(req)
+	res = yield authz.actionAllowed('forceBuild', req)
+	if not res:
+    	    defer.returnValue(Redirect(path_to_authzfail(req)))
+    	    return
 	projects = json.load(open('projects.json'))
         log.msg('loaded projects.json')
 
@@ -60,6 +66,7 @@ class AddProjectResource(ActionResource):
                 p['revision'] = revisions[0]
             if branches and branches[0] != '':
                 p['branch'] = branches[0]
+	    p['owner'] = authz.getUsername(req)
 	    projects[projectname] = p
 	    json.dump(projects, open('projects.json', 'w'), indent=4)
 	    subprocess.call(["/usr/bin/buildbot", "reconfig", "/scratch/buildbot/master"])
