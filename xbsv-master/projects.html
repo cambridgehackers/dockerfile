@@ -26,11 +26,11 @@
 <form method="post" action="/addproject" >
 <div class="row">
 <span class="label">Project Name:</span>
-<input type="text" name="projectname"/>
+<input type="text" name="projectname" autofocus="autofocus" required="required"/>
 </div>
 <div class="row">
 <span class="label">Project Repo:</span>
-<input type="text" name="projectrepo"/>
+<input type="text" name="projectrepo" placeholder="git://github.com/<username>/<repo>.git"  required="required" size="50" pattern="git://github.com/.*/.*"/>
 </div>
 <div class="row">
 <span class="label">Path:</span>
