@@ -38,11 +38,12 @@ class AddProjectResource(ActionResource):
 	log.msg(str(req.args.items()))
         projectname = req.args.get('projectname', [])[0]
 	projectrepo = req.args.get('projectrepo', [])[0]
+	paths = req.args.get('path', [])
 	boardaddr = req.args.get('boardaddr', [])[0]
         log.msg(str(req.args.get('arches', [])))
         arches = req.args.get('arches', ['bluesim'])
-        revision = req.args.get('revision', [])
-        branch = req.args.get('branch', [])
+        revisions = req.args.get('revision', [])
+        branches = req.args.get('branch', [])
 
         m = re.match('git://github.com/(.*)/(.*).git', projectrepo)
 	if projectname in projects:
@@ -53,10 +54,12 @@ class AddProjectResource(ActionResource):
             p = {"repo": projectrepo}
             if arches:
                 p['arches'] = arches
-            if revision:
-                p['revision'] = revision[0]
-            elif branch:
-                p['branch'] = branch[0]
+            if paths and paths[0] != '':
+                p['path'] = paths[0]
+            if revisions and revisions[0] != '':
+                p['revision'] = revisions[0]
+            if branches and branches[0] != '':
+                p['branch'] = branches[0]
 	    projects[projectname] = p
 	    json.dump(projects, open('projects.json', 'w'))
 	    subprocess.call(["/usr/bin/buildbot", "reconfig", "/scratch/buildbot/master"])
