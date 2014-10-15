@@ -11,7 +11,6 @@ RUN easy_install sqlalchemy==0.7.10
 RUN easy_install buildbot-slave
 RUN mkdir -p /scratch/buildbot/.ssh
 ADD buildbot-xbsv-config.tar.gz /scratch/buildbot/
-ADD workername.txt /scratch/buildbot/workername.txt
 ADD id_rsa /scratch/buildbot/.ssh/
 ADD id_rsa.pub /scratch/buildbot/.ssh/
 RUN chown buildbot.users /scratch/buildbot/.ssh /scratch/buildbot/.ssh/*
