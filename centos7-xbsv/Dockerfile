@@ -1,10 +1,10 @@
-# XBSV
+# CONNECTAL
 # version 0.1
 
 From centos7-dev-tools
 Maintainer Jamey Hicks <jamey.hicks@qrclab.com>
 RUN useradd -g users connectal
-ADD xbsv.repo /etc/yum.repos.d/connectal.repo
+ADD connectal.repo /etc/yum.repos.d/connectal.repo
 RUN yum -y install connectal
 RUN yum -y install android-tools
 ## fix up a couple of things
