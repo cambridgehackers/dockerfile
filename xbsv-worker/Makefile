@@ -1,5 +1,5 @@
 
-build: buildbot-xbsv-config.tar.gz id_rsa id_rsa.pub
+build:
 	sudo docker build --no-cache -t centos7-worker .
 
 id_rsa id_rsa.pub:
