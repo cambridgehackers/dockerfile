@@ -15,5 +15,7 @@ RUN easy_install buildbot-slave
 #RUN ls -al /scratch/buildbot/.ssh
 RUN chown -R buildbot.users /scratch/buildbot
 WORKDIR /scratch/buildbot
-#RUN buildslave create-slave worker sj9:9989 worker-xg10 xbsv-rules-atomically
-#ENTRYPOINT buildslave start worker
+ENV HOME /scratch/buildbot
+RUN buildslave create-slave worker sj9:9989 worker-xg12 xbsv-rules-atomically
+# ENTRYPOINT buildslave start worker
+ENTRYPOINT twistd -l worker/twistd.log -n -u buildbot -g users -y worker/buildbot.tac
