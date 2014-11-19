@@ -4,7 +4,7 @@
 From centos7-xbsv:latest
 Maintainer Jamey Hicks <jamey.hicks@qrclab.com>
 RUN mkdir -p /scratch
-RUN useradd -d /scratch/buildbot -g users buildbot && groupmod -g 1010 buildbot && usermod -u 1010 -g 1010 buildbot
+RUN useradd -d /scratch/buildbot buildbot && groupmod -g 1010 buildbot && usermod -u 1010 -g 1010 buildbot
 RUN yum -y install python-devel
 RUN easy_install sqlalchemy==0.7.10
 RUN easy_install buildbot-slave
