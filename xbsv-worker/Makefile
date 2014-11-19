@@ -1,5 +1,6 @@
 
 build:
+	hostname > workername.txt
 	docker build --no-cache -t centos7-worker .
 
 id_rsa id_rsa.pub:
