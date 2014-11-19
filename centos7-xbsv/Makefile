@@ -9,21 +9,21 @@ DOCKER_VOLUMES=-v /scratch/bluespec:/scratch/bluespec:ro -v /scratch/Xilinx:/scr
 DOCKER_ENV=-e LM_LICENSE_FILE=$(LM_LICENSE_FILE) -e DISPLAY=$(DISPLAY)
 
 shell:
-	sudo docker run $(DOCKER_ENV) $(DOCKER_VOLUMES) -u xbsv -i -t $(USER):centos7-xbsv /bin/sh
+	docker run $(DOCKER_ENV) $(DOCKER_VOLUMES) -u xbsv -i -t $(USER):centos7-xbsv /bin/sh
 
 root:
-	sudo docker run $(DOCKER_ENV) $(DOCKER_VOLUMES) -u root -i -t $(USER):centos7-xbsv /bin/sh
+	docker run $(DOCKER_ENV) $(DOCKER_VOLUMES) -u root -i -t $(USER):centos7-xbsv /bin/sh
 
 run:
-	sudo docker run $(DOCKER_ENV) $(DOCKER_VOLUMES) -u xbsv $(USER):centos7-xbsv make V=1 -C /scratch/xbsv/examples/simple gen.bluesim build.bluesim run.bluesim
-	sudo docker run $(DOCKER_ENV) $(DOCKER_VOLUMES) -u xbsv $(USER):centos7-xbsv make V=1 -C /scratch/xbsv/examples/simple gen.zedboard build.zedboard run.zedboard
+	docker run $(DOCKER_ENV) $(DOCKER_VOLUMES) -u xbsv $(USER):centos7-xbsv make V=1 -C /scratch/xbsv/examples/simple gen.bluesim build.bluesim run.bluesim
+	docker run $(DOCKER_ENV) $(DOCKER_VOLUMES) -u xbsv $(USER):centos7-xbsv make V=1 -C /scratch/xbsv/examples/simple gen.zedboard build.zedboard run.zedboard
 
 
 build:
 	cp ~/.Xilinx/Xilinx.lic .
 	cp ~/.flexlmrc flexlmrc || touch flexlmrc
-	#sudo docker build --no-cache=true -t centos7-xbsv .
-	sudo docker build -t centos7-xbsv .
+	#docker build --no-cache=true -t centos7-xbsv .
+	docker build -t centos7-xbsv .
 
 clean:
 	docker rm `docker ps -qa` || true
