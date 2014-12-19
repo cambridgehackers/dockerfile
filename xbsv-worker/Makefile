@@ -1,10 +1,9 @@
 
 build:
 	hostname > workername.txt
+	cp -a /scratch/buildbot/.ssh/id_rsa .
 	docker build --no-cache -t centos7-worker .
-
-id_rsa id_rsa.pub:
-	cp -a /scratch/buildbot/id_rsa* .
+	rm -f id_rsa
 
 buildbot-xbsv-config.tar.gz:
 	git clone /lab/asic/buildbot-xbsv-config.git buildbot-xbsv-config
