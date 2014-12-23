@@ -17,8 +17,9 @@ RUN chown -R buildbot.users /scratch/buildbot
 WORKDIR /scratch/buildbot
 ENV HOME /scratch/buildbot
 ADD workername.txt /scratch/buildbot/workername.txt
+ADD mastername.txt /scratch/buildbot/mastername.txt
 RUN mkdir -p /home/buildbot
-RUN buildslave create-slave /scratch/buildbot/worker sj9:9989 worker-`cat workername.txt` xbsv-rules-atomically
+RUN buildslave create-slave /scratch/buildbot/worker `cat mastername.txt`:9989 worker-`cat workername.txt` xbsv-rules-atomically
 RUN cp -r /scratch/buildbot/worker /home/buildbot
 RUN chown -R buildbot.buildbot /home/buildbot
-ENTRYPOINT twistd -l worker/twistd.log -n -u buildbot -g users -y /home/buildbot/worker/buildbot.tac
+ENTRYPOINT twistd -l worker/twistd.log -n -u buildbot -g users -y /scratch/buildbot/worker/buildbot.tac
