@@ -17,6 +17,8 @@ for t in tags:
     print t, t.name, t.value
     if t.name == 'Name':
        instance_name = t.value
+    if t.name == 'workername':
+        workername = t.value
 
 sys.exit(0)
 from buildslave.bot import BuildSlave
@@ -48,7 +50,7 @@ except ImportError:
 buildmaster_host = '10.0.0.61'
 port = 9989
 slavename = 'worker-ip-10-0-0-61'
-slavename = instance_name
+slavename = workername
 passwd = 'xbsv-rules-atomically'
 keepalive = 600
 usepty = 0
